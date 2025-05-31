@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: dim_customers
+    description: "顧客ディメンション"
+    columns:
+      - name: customer_id
+        tests:
+          - not_null
+          - unique
+  - name: fct_orders
+    description: "受注ファクト"
+    columns:
+      - name: order_id
+        tests:
+          - not_null
+          - unique

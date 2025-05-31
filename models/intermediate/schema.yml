@@ -1,0 +1,9 @@
+version: 2
+
+models:
+  - name: int_model_name
+    description: "中間モデルのサンプル"
+    columns:
+      - name: id
+        tests:
+          - not_null
