@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "sample-dbt"
+version = "0.1.0"
+description = "Sample dbt project"
+authors = []
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+dbt-core = "*"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
