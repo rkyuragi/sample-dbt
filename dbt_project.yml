@@ -19,3 +19,10 @@ clean-targets:
 models:
   sample_dbt:
     +materialized: view
+    +schema: "{{ generate_schema_name_with_env(this.schema) }}"
+    staging:
+        +materialized: view
+        +schema: "{{ generate_schema_name_with_env('staging') }}"
+    marts:
+        +materialized: table
+        +schema: "{{ generate_schema_name_with_env('marts') }}"

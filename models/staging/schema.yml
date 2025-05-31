@@ -8,3 +8,9 @@ models:
         tests:
           - not_null
           - unique
+  - name: stg_payments
+    description: "支払いデータをステージング"
+    columns:
+      - name: order_id
+        tests:
+          - not_null

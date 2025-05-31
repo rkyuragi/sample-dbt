@@ -15,3 +15,9 @@ models:
         tests:
           - not_null
           - unique
+  - name: fct_orders_with_details
+    description: "受注ファクトに支払い詳細を付与"
+    columns:
+      - name: order_id
+        tests:
+          - not_null
