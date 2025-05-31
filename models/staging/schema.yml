@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: stg_your_source_system__table1
+    description: "ソースシステムのテーブル1をステージング"
+    columns:
+      - name: id
+        tests:
+          - not_null
+          - unique

@@ -1,0 +1,10 @@
+version: 2
+
+seeds:
+  - name: country_codes
+    description: "国コード一覧"
+    columns:
+      - name: country_code
+        tests:
+          - not_null
+          - unique
