@@ -197,4 +197,5 @@ logs/
 target/
 profiles.yml
 !profiles/profiles.yml
-
+# dbt packages
+dbt_packages/
