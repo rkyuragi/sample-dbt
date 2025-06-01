@@ -1,0 +1,8 @@
+sample_dbt:
+    target: dev
+    outputs:
+        dev:
+            type: duckdb
+            path: sample.db
+            schema: main
+            threads: 1
