@@ -1,5 +1,6 @@
 with days as (
-    select generate_series('2020-01-01'::date, '2020-12-31'::date, interval '1 day') as date_day
+    select range_date as date_day
+    from range(date '2020-01-01', date '2021-01-01', interval '1 day') as t(range_date)
 )
 select
     date_day,
