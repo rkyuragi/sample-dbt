@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: fct_customer_summary
+    description: "Aggregated summary of orders per customer, showing first/last order dates, total orders, and total revenue."
+    columns:
+      - name: customer_id
+        description: "Unique identifier for the customer."
+        tests:
+          - unique
+          - not_null
+      - name: first_order_date
+        description: "The date of the customer's first order."
+        tests:
+          - not_null
+      - name: last_order_date
+        description: "The date of the customer's most recent order."
+        tests:
+          - not_null
+      - name: total_orders
+        description: "The total number of orders placed by the customer."
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 1
+      - name: total_revenue
+        description: "The total revenue generated from the customer."
+        tests:
+          - not_null
