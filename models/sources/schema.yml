@@ -1,0 +1,48 @@
+# models/staging/schema.yml に追記するか、
+# models/sources.yml などを新規作成して記述
+
+version: 2
+
+sources:
+  # ... (既存のソース定義があれば、その下に追加) ...
+  - name: your_source_system  # {{ source() }} の第一引数と一致させる
+    description: "元のデータが含まれるソースシステムの説明"
+    # 必要に応じて、このソースが格納されているデータベース名やスキーマ名を指定します。
+    # profiles.yml で指定されたデフォルトとは異なる場合に指定します。
+    # database: your_raw_database
+    # schema: your_raw_schema
+    tables:
+      - name: table1  # {{ source() }} の第二引数と一致させる
+        description: "table1 の元データの説明"
+        # オプションで、このソーステーブルのカラムやテストも定義できます
+        columns:
+          - name: id
+            description: "プライマリキー"
+            tests:
+              - unique
+              - not_null
+          - name: column_a
+          - name: column_b
+
+  - name: raw  # {{ source() }} の第一引数 ('raw') と一致させる
+    description: "製品データなどの元データが含まれるソーススキーマ"
+    # 必要に応じて、このソースが格納されているデータベース名やスキーマ名を指定します。
+    # profiles.yml で指定されたデフォルトとは異なる場合に指定します。
+    # database: your_actual_raw_database_name
+    # schema: your_actual_raw_schema_name
+    tables:
+      - name: products  # {{ source() }} の第二引数 ('products') と一致させる
+        description: "製品の元データテーブル"
+        # スナップショットで利用するカラム（特に updated_at や unique_key）を
+        # ここで定義しておくと、ドキュメント生成やテストに役立ちます。
+        columns:
+          - name: product_id
+            description: "製品ID（unique_keyとして使用）"
+            tests:
+              - unique
+              - not_null
+          - name: updated_at
+            description: "更新日時（strategy: timestamp で使用）"
+            tests:
+              - not_null
+          # ... その他の必要なカラム ...

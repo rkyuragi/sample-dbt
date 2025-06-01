@@ -1,5 +1,25 @@
 version: 2
 
+# sources:
+#   - name: your_source_system  # {{ source() }} の第一引数と一致させる
+#     description: "元のデータが含まれるソースシステムの説明"
+#     # 必要に応じて、このソースが格納されているデータベース名やスキーマ名を指定します。
+#     # profiles.yml で指定されたデフォルトとは異なる場合に指定します。
+#     # database: your_raw_database
+#     # schema: your_raw_schema
+#     tables:
+#       - name: table1  # {{ source() }} の第二引数と一致させる
+#         description: "table1 の元データの説明"
+#         # オプションで、このソーステーブルのカラムやテストも定義できます
+#         columns:
+#           - name: id
+#             description: "プライマリキー"
+#             tests:
+#               - unique
+#               - not_null
+#           - name: column_a
+#           - name: column_b
+
 models:
   - name: stg_your_source_system__table1
     description: "ソースシステムのテーブル1をステージング"
