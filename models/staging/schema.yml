@@ -1,7 +1,7 @@
 version: 2
 
 # sources:
-#   - name: your_source_system  # {{ source() }} の第一引数と一致させる
+#   - name: test_dbt_cloud  # {{ source() }} の第一引数と一致させる
 #     description: "元のデータが含まれるソースシステムの説明"
 #     # 必要に応じて、このソースが格納されているデータベース名やスキーマ名を指定します。
 #     # profiles.yml で指定されたデフォルトとは異なる場合に指定します。
@@ -21,7 +21,7 @@ version: 2
 #           - name: column_b
 
 models:
-  - name: stg_your_source_system__table1
+  - name: stg_test_dbt_cloud__table1
     description: "ソースシステムのテーブル1をステージング"
     columns:
       - name: id

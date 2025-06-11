@@ -1,6 +1,6 @@
 with source as (
     select *
-    from {{ source('your_source_system', 'table1') }}
+    from {{ source('test_dbt_cloud', 'table1') }}
 )
 
 select

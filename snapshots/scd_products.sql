@@ -9,6 +9,6 @@
     )
 }}
 
-select * from {{ source('raw', 'products') }}
+select * from {{ source('test_dbt_cloud', 'products') }}
 
 {% endsnapshot %}
