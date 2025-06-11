@@ -1,7 +1,7 @@
 {% snapshot scd_products %}
 {{
     config(
-        target_database='test_dbt_cloud',
+        target_database='rehab-cdp-dev',
         target_schema='snapshots',
         unique_key='product_id',
         strategy='timestamp',
