@@ -1,8 +1,42 @@
+# BigQuery用のdbt profiles.yml設定例
+# ~/.dbt/profiles.yml または プロジェクトルート/profiles/profiles.yml に配置
+
 sample_dbt:
-    target: dev
-    outputs:
-        dev:
-            type: duckdb
-            path: sample.db
-            schema: main
-            threads: 1
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth  # または service-account
+      project: "{{ env_var('GOOGLE_CLOUD_PROJECT') }}"  # GCPプロジェクトID
+      dataset: dbt_dev  # dbtの作業用データセット
+      threads: 4
+      timeout_seconds: 300
+      location: us-central1  # BigQueryのリージョン
+      priority: interactive
+      retries: 1
+      
+      # サービスアカウントを使用する場合（本番環境推奨）
+      # method: service-account
+      # keyfile: /path/to/service-account-key.json
+      
+      # 追加設定（オプション）
+      # maximum_bytes_billed: 1000000000  # クエリの最大課金バイト数制限
+      # job_execution_timeout_seconds: 300
+      # job_retries: 1
+      # job_retry_deadline_seconds: 600
+      
+    prod:
+      type: bigquery
+      method: service-account
+      project: "{{ env_var('GOOGLE_CLOUD_PROJECT') }}"
+      dataset: dbt_prod
+      threads: 8
+      timeout_seconds: 600
+      location: us-central1
+      keyfile: "{{ env_var('DBT_BIGQUERY_KEYFILE') }}"
+      priority: batch
+      maximum_bytes_billed: 10000000000  # 10GB制限
+
+# 環境変数の設定例:
+# export GOOGLE_CLOUD_PROJECT=your-project-id
+# export DBT_BIGQUERY_KEYFILE=/path/to/service-account-key.json

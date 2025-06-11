@@ -1,6 +1,6 @@
 with days as (
-    select range_date as date_day
-    from range(date '2020-01-01', date '2021-01-01', interval '1 day') as t(range_date)
+    select date_day
+    from unnest(generate_date_array('2020-01-01', '2020-12-31', interval 1 day)) as date_day
 )
 select
     date_day,
