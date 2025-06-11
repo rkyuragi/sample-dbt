@@ -5,4 +5,4 @@ with totals as (
 )
 select *
 from totals
-where total_revenue <= 0  -- 収益が0以下の場合のみレコードを返す（失敗を示す）
+where total_revenue < 0  -- 収益が0未満の場合のみレコードを返す（失敗を示す）
