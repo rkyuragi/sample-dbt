@@ -1,27 +1,16 @@
 [sqlfluff]
-# ご自身のDWHに合わせて変更 (例: bigquery, snowflake, redshift, postgres)
 dialect = bigquery
-# dbtのJinjaテンプレートを解釈するように設定
 templater = dbt
-# チェック対象のファイル拡張子
-sql_file_exts = .sql
-
-# チェックから除外するディレクトリ
-exclude_paths = dbt_packages,snapshots,tests
+exclude_rules = LT05,LT12
 
 [sqlfluff:templater:dbt]
-# dbtプロジェクトの場所
-project_dir = ./
-# profiles.yml があるディレクトリを指定します
-# プロジェクトフォルダ直下にあれば、以下のように `./` を追加してください
-profiles_dir = ./profiles/
+project_dir = .
+profiles_dir = .
+profile = sample_dbt
+target = dev
 
-[sqlfluff:rules]
-# dbtルールセットを有効化（本体に組み込まれています）
-rules = dbt
-# 必要に応じて他のルールを追加できます
-# 例: L003, L010 など
+[sqlfluff:rules:layout.long_lines]
+line_length = 120
 
-[sqlfluff:rules:dbt]
-# dbt特有のルール（例: models/staging配下ではsourcesの使用を必須にする）
-# sources = dbt_source_is_valid
+[sqlfluff:rules:capitalisation.keywords]
+capitalisation_policy = lower
