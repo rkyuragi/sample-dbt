@@ -1,0 +1,16 @@
+[sqlfluff]
+dialect = bigquery
+templater = dbt
+exclude_rules = LT05,LT12
+
+[sqlfluff:templater:dbt]
+project_dir = .
+profiles_dir = .
+profile = sample_dbt
+target = dev
+
+[sqlfluff:rules:layout.long_lines]
+line_length = 120
+
+[sqlfluff:rules:capitalisation.keywords]
+capitalisation_policy = lower

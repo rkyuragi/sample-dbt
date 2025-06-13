@@ -16,6 +16,10 @@ clean-targets:
   - 'target'
   - 'dbt_packages'
 
+# PR環境でのデータセット作成を有効化
+on-run-start:
+  - "{{ create_schema_if_not_exists() }}"
+
 models:
   sample_dbt:
     +materialized: view
